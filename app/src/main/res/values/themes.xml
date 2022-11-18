@@ -15,7 +15,8 @@
         <!-- Customize your theme here. -->
 
 
-        <!--Para seleccionar en el menú-->
+        <!--Para las animaciones-->
+        <item name="android:windowContentTransitions">true</item>
 
     </style>
 </resources>
