@@ -12,9 +12,9 @@
     <string name="title3">De atención</string>
     <string name="title4">LLAMA YA!</string>
     <string name="title5">Productos</string>
-    <string name="description1">Gracias por descargar nuestra app digital, aquí verán los detalles y productos que ofrece nuestra empresa.</string>
+    <string name="description1">Gracias por descargar nuestra app digital, aquí verán los detalles y productos que ofrece nuestro local.</string>
     <string name="description2">Nuestra empresa se basa en los precios del mercado para determinar el suyo, con el fin de no exagerar y hacer posible la compra de  nuestros productos</string>
-    <string name="description3">Contamos con dos horarios de atención, uno en la mañana y otro en la tarde, el entre tiempo de media hora es por colación del personal.</string>
+    <string name="description3">Somos transparentes con nuestros clientes, por medio de nuestros procesos te garantizamos seguridad y calidad en cada uno de los productos.</string>
     <string name="description4">Ahora podrás añadir a un carrito la lista de tus productos, y nuestro repartidor te las llevará donde tu estimes conveniente.</string>
     <string name="description5">Aquí te enterarás de los productos de nuestra empresa, como descripción e imagenes reales de estos.</string>
 
@@ -22,7 +22,7 @@
     <!--ACÁ SE CREAN LAS VARIABLES PARA EL ONBOARDING-->
     <string name="first_slide_tittle">BIENVENIDOS</string>
     <string name="second_slide_tittle">PRECIOS</string>
-    <string name="third_slide_tittle">HORARIO</string>
+    <string name="third_slide_tittle">CALIDAD</string>
     <string name="four_slide_tittle">DELIVERY</string>
     <string name="five_slide_tittle">PRODUCTOS</string>
 
