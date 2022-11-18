@@ -9,7 +9,7 @@
 
 
     <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/logoGemma2"
             android:layout_width="407dp"
             android:layout_height="463dp"
             android:src="@drawable/splashscreen"

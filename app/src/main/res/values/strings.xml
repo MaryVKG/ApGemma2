@@ -1,3 +1,128 @@
 <resources>
     <string name="app_name">AppGemma2</string>
+
+
+    <string name="logo_name">GemmaMobile</string>
+    <string name="slogan_name">Una exquisitez del litoral</string>
+    <string name="powered_by">Mary V. Klinger</string>
+
+
+    <string name="title1">A GEMMAMOBILE</string>
+    <string name="title2">De empanadas</string>
+    <string name="title3">De atención</string>
+    <string name="title4">LLAMA YA!</string>
+    <string name="title5">Productos</string>
+    <string name="description1">Gracias por descargar nuestra app digital, aquí verán los detalles y productos que ofrece nuestra empresa.</string>
+    <string name="description2">Nuestra empresa se basa en los precios del mercado para determinar el suyo, con el fin de no exagerar y hacer posible la compra de  nuestros productos</string>
+    <string name="description3">Contamos con dos horarios de atención, uno en la mañana y otro en la tarde, el entre tiempo de media hora es por colación del personal.</string>
+    <string name="description4">Ahora podrás añadir a un carrito la lista de tus productos, y nuestro repartidor te las llevará donde tu estimes conveniente.</string>
+    <string name="description5">Aquí te enterarás de los productos de nuestra empresa, como descripción e imagenes reales de estos.</string>
+
+
+    <!--ACÁ SE CREAN LAS VARIABLES PARA EL ONBOARDING-->
+    <string name="first_slide_tittle">BIENVENIDOS</string>
+    <string name="second_slide_tittle">PRECIOS</string>
+    <string name="third_slide_tittle">HORARIO</string>
+    <string name="four_slide_tittle">DELIVERY</string>
+    <string name="five_slide_tittle">PRODUCTOS</string>
+
+    <!--acá se crean los botones-->
+    <string name="skip_btn">SALTAR</string>
+    <string name="next_btn">SIGUIENTE</string>
+    <string name="let_get_started">VAMOS YA!</string>
+
+
+    <!--ACÁ LAS VARIABLES PARA EL DASHBOARD-->
+    <string name="productos">MENÚ</string>
+    <string name="ourEmpanadas">EMPANADAS</string>
+    <string name="aboutUs">NOSOTROS</string>
+    <string name="delivery">DELIVERY</string>
+    <string name="search_text">BUSCAR...</string>
+
+    <!--CARDVIEW 1-->
+    <string name="productosCard">Bebestibles</string>
+
+    <!--CARDVIEW 2-->
+    <string name="acompañamientos">Postres</string>
+
+    <!--CARDVIEW 3-->
+    <string name="opciones">Preparaciones</string>
+
+    <!--CARDVIEW 4-->
+    <string name="verMas1">Ver listado</string>
+    <string name="verMas2">Ver lista</string>
+    <string name="verMas3">Ver opciones</string>
+
+
+    <!--Descripciones cardview-->
+    <string name="productosDes">Para que acompañes tus ricas empanadas, te presentamos el listado de bebestibles.</string>
+    <string name="productosFav">Agregado a favoritos</string>
+
+
+    <!--Para la barra de navegación-->
+    <string name="barraUno">Inicio</string>
+    <string name="barraDos">Buscar</string><!--ACÁ SE MUESTRA EL LISTADO DE EMPANADAS-->
+    <string name="barraTres">Acerca de nosotros</string><!--ACÁ MONITOS DEL PERSONAL, sticker o memojis del señor maestro, la free, la señora lili, la sofi, la oti, la señora jefa y yo-->
+    <string name="barraCuatro">Contáctanos</string> <!--Acá pongo la opción de llamar por celular y el linkeo con la página de instagram-->
+
+    <!--Para la segunda categoria del menu, irá el perfil, inicio sesión, entre otros-->
+    <string name="menuUno">Perfil</string>
+    <string name="menuDos">Iniciar Sesión</string>
+    <string name="menuTres">Cerrar Sesión</string>
+    <string name="menuCuatro">Registrarse</string>
+    <string name="menuCinco">Favoritos</string>
+    <string name="menuSeis">Comprar</string>
+    <string name="menuSiete">Compras</string>
+    <string name="menuOcho">Retiro</string>
+    <string name="menuNueve">Delivery</string>
+
+
+    <!--Para el header del menú-->
+    <string name="headerUno">Una exquisitez del litoral</string>
+    <string name="headerDos">Gemma</string>
+
+
+    <!--Acá se pondrá al equipo de trabajo-->
+    <string name="miembroUno">Señora Jefaza</string>
+    <string name="miembroDos">Señora Lili</string>
+    <string name="miembroTres">Señor Maestro</string>
+    <string name="miembroCuatro">Free</string>
+    <string name="miembroCinco">Mini Jefa</string>
+    <string name="miembroSeis">Oti</string>
+    <string name="miembroSiete">Vane</string>
+
+
+    <string name="miembrosDescripcion">Ver información</string>
+
+
+    <!--Para el activity del Retail StarUp-->
+
+    <string name="sign_up">Registrarse</string>
+    <string name="retailer_heading">Bienvenidos a Gemma2</string>
+    <string name="retailer_tag_line">Las mejores empanadas del litoral central</string>
+    <string name="create_account">Crear cuenta</string>
+    <string name="remember_me">Recuerdame</string>
+    <string name="forgot_password">Olvide mi contraseña</string>
+
+
+    <!--Para el activity del Login-->
+    <string name="home">INICIO</string>
+    <string name="buscar">BUSCAR</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="crear">Crear Cuenta</string>
+
+    <string name="profile">Perfil</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="share">Compartir</string>
+    <string name="deliverrr">Haz tu pedido</string>
+
+
+    <!--Aquí las variables del registro-->
+    <string name="fullname">Nombre Completo</string>
+    <string name="username">Usuario</string>
+    <string name="email">Correo Eléctronico</string>
+    <string name="phone">Teléfono</string>
+    <string name="pass">Contraseña</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
 </resources>
