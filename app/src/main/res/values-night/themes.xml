@@ -3,7 +3,7 @@
     <style name="Theme.AppGemma2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#FBB650</item>
         <item name="colorPrimaryVariant">#FFC878</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/purple_500</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#E88A00</item>
         <item name="colorSecondaryVariant">#E88A00</item>

@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -36,6 +37,8 @@ dependencies {
 
     //Dependencia para el login y sign Up
     implementation 'com.google.android.material:compose-theme-adapter:1.2.0'
+    implementation 'com.google.firebase:firebase-database:20.1.0'
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
 
 
     testImplementation 'junit:junit:4.13.2'
