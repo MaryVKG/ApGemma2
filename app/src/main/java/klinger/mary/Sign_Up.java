@@ -1,19 +1,35 @@
 package klinger.mary;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.text.TextUtils;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sign_Up extends AppCompatActivity {
 
@@ -21,7 +37,16 @@ public class Sign_Up extends AppCompatActivity {
     TextInputLayout regName, regUsername, regEmail, regPhoneNo, regPassword;
 
     FirebaseDatabase rootNode;
+    FirebaseAuth mAuth;
     DatabaseReference reference;
+    ProgressDialog progressDialog;
+    FirebaseUser mUser;
+
+    Vibrator vibrator;
+
+    String userID;
+    FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,137 +61,31 @@ public class Sign_Up extends AppCompatActivity {
         regPassword = findViewById(R.id.reg_password);
         signUpregistro = findViewById(R.id.signUpBtn);
         signUpinicio = findViewById(R.id.loginBtn);
+
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        //vibrador
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+
+        db = FirebaseFirestore.getInstance();
+        progressDialog = new ProgressDialog(this);
         //Save data in FireBase on button click
-
-
-        signUpregistro.setOnClickListener(new View.OnClickListener() {
+        signUpinicio.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference = rootNode.getReference("clientes");
-                //Get all the values
-                String name = regName.getEditText().getText().toString();
-                String username = regUsername.getEditText().getText().toString();
-                String email = regEmail.getEditText().getText().toString();
-                String phoneNo = regPhoneNo.getEditText().getText().toString();
-                String password = regPassword.getEditText().getText().toString();
-                UserHelperClass helperClass = new UserHelperClass (name, username, email, phoneNo, password);
-                reference.child(phoneNo).setValue(helperClass);
-
+            public void onClick(View v) {
+                openLoginActivity();
             }
-        });//Register Button method end
-    }//onCreate Method End
+        });
 
+        signUpregistro.setOnClickListener(view -> {
+            userRegister();
 
-    //validaciones
-
-    private Boolean validateName() {
-        String val = regName.getEditText().getText().toString();
-        if (val.isEmpty()) {
-            regName.setError("Field cannot be empty");
-            return false;
-        }
-        else {
-            regName.setError(null);
-            regName.setErrorEnabled(false);
-            return true;
-        }
+        });
     }
+       //onCreate Method End
 
-    private Boolean validateUsername() {
-        String val = regUsername.getEditText().getText().toString();
-        String noWhiteSpace = "\\A\\w{4,20}\\z";
-        if (val.isEmpty()) {
-            regUsername.setError("Field cannot be empty");
-            return false;
-        } else if (val.length() >= 15) {
-            regUsername.setError("Username too long");
-            return false;
-        } else if (!val.matches(noWhiteSpace)) {
-            regUsername.setError("White Spaces are not allowed");
-            return false;
-        } else {
-            regUsername.setError(null);
-            regUsername.setErrorEnabled(false);
-            return true;
-        }
-    }
+    private void openLoginActivity() {
 
-    private Boolean validateEmail() {
-        String val = regEmail.getEditText().getText().toString();
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        if (val.isEmpty()) {
-            regEmail.setError("Debes rellenar el recuadro.");
-            return false;
-        } else if (!val.matches(emailPattern)) {
-            regEmail.setError("El Email es incorrecto.");
-            return false;
-        } else {
-            regEmail.setError(null);
-            regEmail.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validatePhoneNo() {
-        String val = regPhoneNo.getEditText().getText().toString();
-        if (val.isEmpty()) {
-            regPhoneNo.setError("Debes rellenar el recuadro.");
-            return false;
-        } else {
-            regPhoneNo.setError(null);
-            regPhoneNo.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validatePassword() {
-        String val = regPassword.getEditText().getText().toString();
-        String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{4,}" +               //at least 4 characters
-                "$";
-        if (val.isEmpty()) {
-            regPassword.setError("Debes rellenar el recuadro.");
-            return false;
-        } else if (!val.matches(passwordVal)) {
-            regPassword.setError("La contraseña es demasiado débil.");
-            return false;
-        } else {
-            regPassword.setError(null);
-            regPassword.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-
-
-    public void registerUser(View view){
-            if(!validateName() |!validatePassword() | !validatePhoneNo() | !validateEmail() | !validateUsername())
-            {
-                return;
-            }
-        Intent intent = new Intent(getApplicationContext(), Login.class);
-        String name = regName.getEditText().getText().toString();
-        String username = regUsername.getEditText().toString();
-        String email = regEmail.getEditText().toString();
-        String phoneNo = regPhoneNo.getEditText().toString();
-        String password = regPassword.getEditText().toString();
-        UserHelperClass helperClass = new UserHelperClass (name, username, email, phoneNo, password);
-        reference.child(phoneNo).setValue(helperClass);
-        startActivity(intent);
-
-
-    }
-
-
-
-    public void callLoginScreen(View view) {
         Intent intent = new Intent(getApplicationContext(), Login.class);
         Pair[] pairs = new Pair[1];
         pairs[0] = new Pair<View, String>(findViewById(R.id.loginBtn), "button_tran");
@@ -180,4 +99,66 @@ public class Sign_Up extends AppCompatActivity {
         }
 
     }
+
+    public void userRegister(){
+        String nombre = regName .getEditText().getText().toString();
+        String usuario = regUsername.getEditText().getText().toString();
+        String correo = regEmail.getEditText().getText().toString();
+        String telefono = regPhoneNo.getEditText().getText().toString();
+        String contrasena = regPassword.getEditText().getText().toString();
+
+
+        if(TextUtils.isEmpty(nombre)){
+            regName.setError("Ingrese su nombre completo.");
+            regName.requestFocus();
+        } else if(TextUtils.isEmpty(usuario)) {
+            regUsername.setError("Ingrese su nombre de usuario.");
+            regUsername.requestFocus();
+        } else if(TextUtils.isEmpty(correo)) {
+            regEmail.setError("Ingrese su correo electrónico.");
+            regEmail.requestFocus();
+        } else if(TextUtils.isEmpty(telefono)) {
+            regPhoneNo.setError("Ingrese su número celular.");
+            regPhoneNo.requestFocus();
+        }else if(TextUtils.isEmpty(contrasena)) {
+            regPassword.setError("Ingrese su contraseña.");
+            regPassword.requestFocus();
+        }else{
+            mAuth.createUserWithEmailAndPassword(correo, contrasena).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()) {
+                        userID = mAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = db.collection("users").document(userID);
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("Nombre Completo", regName);
+                        user.put("Usuario", regUsername);
+                        user.put("Correo Eléctronico", regEmail);
+                        user.put("Teléfono", regPhoneNo);
+                        user.put("Contraseña", regPassword);
+
+                        documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Log.d("TAG", "EXITOSO, EL USUARIO SE HA REGISTRADO CON ÉXITO" +userID);
+                            }
+                        });
+                        Toast.makeText(Sign_Up.this, "Usuario registrado con exito ", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Sign_Up.this, Login.class));
+                    }else{
+                        Toast.makeText(Sign_Up.this, "EL usuario no se ha registrado con éxito"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                }
+            });
+        }
+
+
+    }
+
+    //validaciones
+
+
+
 }

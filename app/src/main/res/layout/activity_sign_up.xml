@@ -153,7 +153,6 @@
               android:layout_marginTop="5dp"
               android:layout_marginBottom="5dp"
               android:layout_marginStart="40dp"
-              android:onClick="registerUser"
               android:transitionName="transitionSignUp"
 
               />
@@ -169,8 +168,6 @@
               android:layout_marginTop="5dp"
               android:layout_marginStart="30dp"
               android:layout_marginBottom="5dp"
-
-              android:onClick="callLoginScreen"
               android:transitionName="button_tran"/>
 
 
